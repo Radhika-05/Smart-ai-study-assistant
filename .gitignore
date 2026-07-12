@@ -1,7 +1,7 @@
 # Environment variables
 .env
 
-# Virtual environments
+# Virtual Environment
 venv/
 .venv/
 
@@ -10,12 +10,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Streamlit
+.streamlit/
+
 # IDE
 .vscode/
 .idea/
-
-# Streamlit
-.streamlit/
 
 # Logs
 *.log
@@ -23,6 +23,6 @@ __pycache__/
 # Local data
 data/history.json
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
