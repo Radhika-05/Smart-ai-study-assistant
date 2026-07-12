@@ -1,4 +1,5 @@
-# 📚 Smart AI Study Assistant v2
+# 📚 Smart AI Study Assistant 
+Live demo: https://smart-ai-study-assistant.streamlit.app/
 
 **Handwritten Notes → AI Study Pack → Flashcards → Export**
 
