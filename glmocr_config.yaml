@@ -1,0 +1,31 @@
+# GLM-OCR SDK configuration — MaaS (cloud) mode
+# Full options: https://github.com/zai-org/GLM-OCR/blob/main/glmocr/config.yaml
+
+server:
+  host: "0.0.0.0"
+  port: 5002
+  debug: false
+
+logging:
+  level: WARNING
+
+pipeline:
+  ocr_api:
+    api_host: open.bigmodel.cn   # Zhipu MaaS endpoint — no GPU needed
+    api_port: 443
+    api_scheme: https
+    api_key: null                # Leave null — set ZHIPU_API_KEY in .env instead
+    connect_timeout: 120
+    request_timeout: 120
+
+  page_loader:
+    max_tokens: 16384
+    temperature: 0.01
+    image_format: JPEG
+    min_pixels: 12544
+    max_pixels: 71372800
+
+  result_formatter:
+    output_format: both          # json + markdown
+
+  enable_layout: false           # Disable heavy layout detection for speed
