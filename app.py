@@ -51,32 +51,20 @@ with st.sidebar:
     st.markdown("## ⚙️ Configuration")
     st.divider()
 
-    # Check if running on Streamlit Cloud
-running_on_cloud = (
-    "GEMINI_API_KEY" in st.secrets
-    and "ZHIPU_API_KEY" in st.secrets
-)
+        # Load API keys automatically
+    zhipu_key = os.getenv("ZHIPU_API_KEY", "")
+    gemini_key = os.getenv("GEMINI_API_KEY", "")
 
-if running_on_cloud:
-    gemini_key = st.secrets["GEMINI_API_KEY"]
-    zhipu_key = st.secrets["ZHIPU_API_KEY"]
+    # If deployed on Streamlit Cloud, use Streamlit Secrets
+    try:
+        if "ZHIPU_API_KEY" in st.secrets:
+            zhipu_key = st.secrets["ZHIPU_API_KEY"]
 
-    st.success("🟢 AI services configured")
-
-else:
-    zhipu_key = st.text_input(
-        "🔑 Zhipu API Key",
-        value=os.getenv("ZHIPU_API_KEY", ""),
-        type="password",
-        help="For GLM-OCR cloud OCR",
-    )
-
-    gemini_key = st.text_input(
-        "🔑 Gemini API Key",
-        value=os.getenv("GEMINI_API_KEY", ""),
-        type="password",
-        help="For AI analysis",
-    )
+        if "GEMINI_API_KEY" in st.secrets:
+            gemini_key = st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        # Running locally without Streamlit Secrets
+        pass
 
     st.divider()
     st.markdown("**📥 Input Mode**")
