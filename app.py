@@ -49,8 +49,7 @@ inject_styles()
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## ⚙️ Configuration")
-    st.divider()
-
+    
         # Load API keys automatically
     zhipu_key = os.getenv("ZHIPU_API_KEY", "")
     gemini_key = os.getenv("GEMINI_API_KEY", "")
